@@ -113,3 +113,4 @@ EXPOSE 30000/udp
 VOLUME /config/.minetest
 
 RUN /usr/bin/minetestserver --terminal --info
+CMD [""]
