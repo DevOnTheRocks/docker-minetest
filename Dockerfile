@@ -111,3 +111,5 @@ COPY root /
 # ports and volumes
 EXPOSE 30000/udp
 VOLUME /config/.minetest
+
+RUN /usr/bin/minetestserver --terminal --info
