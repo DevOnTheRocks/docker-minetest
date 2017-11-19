@@ -1,4 +1,4 @@
-FROM lsiobase/alpine:3.6
+FROM alpine
 LABEL Author cossacksman
 
 # set version label
