@@ -7,16 +7,17 @@ ARG VERSION
 
 # environment variables
 ENV HOME="/server" \
-SERVER=${HOME}+"/minetest" \
+SERVER="/server/minetest" \
 MINETEST_SUBGAME_PATH="/server/minetest/games"
 
 # build variables
 ARG LDFLAGS="-lintl"
 
-# install build packages
-RUN \ 
- mkdir -p ${SERVER} \
+# Create server directory 
+RUN mkdir -p server/minetest
 
+# install build packages
+RUN \
  apk add --no-cache --virtual=build-dependencies \
 	bzip2-dev \
 	cmake \
@@ -73,9 +74,9 @@ apk add --no-cache \
  make install && \
 
 # compile minetestserver
- git clone --depth 1 https://github.com/minetest/minetest.git ${SERVER} && \
- cp ${server}/minetest.conf.example ${SERVER}/minetest.conf && \
- cd ${server} && \
+ git clone --depth 1 https://github.com/minetest/minetest.git /server/minetest && \
+ cp /server/minetest/minetest.conf.example ${SERVER}/minetest.conf && \
+ cd /server/minetest && \
  cmake . \
 	-DBUILD_CLIENT=0 \
 	-DBUILD_SERVER=1 \
@@ -90,7 +91,7 @@ apk add --no-cache \
  make install && \
 
 # fetch additional game from git
- git clone --depth 1 https://github.com/minetest/minetest_game.git ${SERVER}/games && \
+ git clone --depth 1 https://github.com/minetest/minetest_game.git /server/minetest/games && \
 
 # cleanup
  apk del --purge \
