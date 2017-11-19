@@ -14,8 +14,9 @@ MINETEST_SUBGAME_PATH="/server/minetest/games"
 ARG LDFLAGS="-lintl"
 
 # install build packages
-RUN \
+RUN \ 
  mkdir -p ${SERVER} \
+
  apk add --no-cache --virtual=build-dependencies \
 	bzip2-dev \
 	cmake \
