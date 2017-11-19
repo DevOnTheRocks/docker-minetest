@@ -75,7 +75,7 @@ apk add --no-cache \
 
 # compile minetestserver
  git clone --depth 1 https://github.com/minetest/minetest.git /server/minetest && \
- cp /server/minetest/minetest.conf.example ${SERVER}/minetest.conf && \
+ cp /server/minetest/minetest.conf.example /server/minetest/minetest.conf && \
  cd /server/minetest && \
  cmake . \
 	-DBUILD_CLIENT=0 \
@@ -91,7 +91,7 @@ apk add --no-cache \
  make install && \
 
 # fetch additional game from git
- git clone --depth 1 https://github.com/minetest/minetest_game.git /server/minetest/games && \
+ git clone --depth 1 https://github.com/minetest/minetest_game.git /server/minetest/games/minetest && \
 
 # cleanup
  apk del --purge \
